@@ -1,5 +1,5 @@
 {
-  "name": "unplugin-starter",
+  "name": "unplugin-opentelemetry",
   "version": "0.1.0",
   "description": "Register global imports on demand for Vite and Webpack",
   "keywords": [
@@ -9,13 +9,13 @@
     "rollup",
     "transform"
   ],
-  "homepage": "https://github.com/antfu/unplugin-starter#readme",
+  "homepage": "https://github.com/emattiza/unplugin-opentelemetry#readme",
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-starter/issues"
+    "url": "https://github.com/emattiza/unplugin-opentelemetry/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-starter.git"
+    "url": "git+https://github.com/emattiza/unplugin-opentelemetry.git"
   },
   "license": "MIT",
   "exports": {
