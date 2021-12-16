@@ -1,0 +1,3 @@
+tasks:
+  - before: npm install
+    init: pnpm run dev
