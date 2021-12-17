@@ -7,13 +7,15 @@ import {
 export function getContext() {
     if (process.env.TRACEPARENT) {
         const propagator = new W3CTraceContextPropagator();
-        return propagator.extract(
+        const newContext = propagator.extract(
             api.context.active(),
             {
                 [TRACE_PARENT_HEADER]: process.env.TRACEPARENT
             },
             api.defaultTextMapGetter
         )
+        return newContext;
+
     } else {
         return undefined;
     }

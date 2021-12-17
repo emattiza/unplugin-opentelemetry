@@ -5,10 +5,12 @@ import { Options } from './types';
 import { context, Context, Span } from '@opentelemetry/api';
 import { BasicTracerProvider } from '@opentelemetry/sdk-trace-base'
 import { trace } from '@opentelemetry/api';
+import { getContext } from './otel/utils/get-context';
 
 export default createUnplugin<Options>((plugin_options, meta) => {
   let buildSpan: Span;
-  let currentContext: Context | undefined = undefined;
+  let currentContext: Context | undefined = getContext();
+  console.log(currentContext)
   if (plugin_options) {
     setupOtelProvider(plugin_options, meta); // Need to use plugin_options to configure otel
   } else {
@@ -20,19 +22,38 @@ export default createUnplugin<Options>((plugin_options, meta) => {
     name: `${meta.framework}-build-opentelemetry`,
     buildStart() {
       buildSpan = tracer.startSpan("build", undefined, currentContext);
-      buildSpan.addEvent("build output test");
+      return undefined;
     },
     resolveId(id, importer) {
-      const resolveIdCtx = trace.setSpan(context.active(), buildSpan)
-      const resolveIdSpan = tracer.startSpan('resolve_id', undefined, resolveIdCtx)
-      resolveIdSpan.setAttribute("resolve.id", `${id}`)
-      resolveIdSpan.setAttribute("resolve.importer", `${importer}`)
-      resolveIdSpan.end()
-      return null
+      const resolveIdCtx = trace.setSpan(context.active(), buildSpan);
+      const resolveIdSpan = tracer.startSpan('resolve_id', undefined, resolveIdCtx);
+      resolveIdSpan.setAttribute("resolve.id", `${id}`);
+      resolveIdSpan.setAttribute("resolve.importer", `${importer}`);
+      resolveIdSpan.end();
+      return undefined;
+    },
+    load(id) {
+      const loadSpan = tracer.startSpan('load');
+      loadSpan.setAttribute("load.id", `${id}`);
+      loadSpan.end()
+      return undefined;
+    },
+    transform(this, code, id) {
+      const transformSpan = tracer.startSpan('transform')
+      transformSpan.setAttribute("transform.code", `${code}`)
+      transformSpan.setAttribute("transform.id", `${id}`)
+      transformSpan.end()
+      return undefined;
+    },
+    transformInclude(id) {
+      const transformIncludeSpan = tracer.startSpan('transformInclude')
+      transformIncludeSpan.setAttribute("transform-include.id", `${id}`)
+      transformIncludeSpan.end()
+      return undefined;
     },
     buildEnd() {
       buildSpan.end();
+      return undefined;
     },
-
   }
 })
