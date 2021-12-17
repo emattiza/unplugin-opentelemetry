@@ -1,16 +1,15 @@
 import { OTLPTraceExporter } from '@opentelemetry/exporter-otlp-grpc'
 import { defineConfig } from 'vite'
-import Inspect from 'vite-plugin-inspect'
 import Unplugin from '../src/vite'
-import { OTLPExporterConfigNode } from '@opentelemetry/exporter-otlp-grpc/build/src/types';
-import * as grpc from '@grpc/grpc-js'
+import vue from '@vitejs/plugin-vue'
+
+const otel = Unplugin;
 
 export default defineConfig({
   plugins: [
-    Inspect(),
-    Unplugin({
+    vue(),
+    otel({
       exporter: 'console',
-      otlpOptions: {metadata: new grpc.Metadata()}
     }),
   ],
 })
