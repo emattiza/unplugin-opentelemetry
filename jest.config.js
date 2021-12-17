@@ -8,6 +8,7 @@ module.exports = {
   testEnvironment: 'node',
   roots: [
     '<rootDir>/src/test',
+    '<rootDir>/src/otel',
   ],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
