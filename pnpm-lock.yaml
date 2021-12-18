@@ -58,6 +58,7 @@ importers:
       postcss: ^8.3.5
       tailwindcss: ^2.2.2
       typescript: ^4.3.4
+      unplugin-opentelemetry: '*'
       vite: ^2.3.8
       vue: ^3.1.1
       vue-router: ^4.0.9
@@ -73,6 +74,7 @@ importers:
       postcss: 8.3.6
       tailwindcss: 2.2.19_31ee2f1c6396c35bc9f63c90f89d6daf
       typescript: 4.4.2
+      unplugin-opentelemetry: link:..
       vite: 2.5.3
       vue-tsc: 0.2.3_typescript@4.4.2
 
