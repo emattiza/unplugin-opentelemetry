@@ -13,11 +13,11 @@ npm i unplugin-opentelemetry
 
 ```ts
 // vite.config.ts
-import Starter from 'unplugin-opentelemetry/vite'
+import otel from 'unplugin-opentelemetry/vite'
 
 export default defineConfig({
   plugins: [
-    Starter({ /* options */ }),
+    otel({ /* options */ }),
   ],
 })
 ```
@@ -31,11 +31,11 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import Starter from 'unplugin-opentelemetry/rollup'
+import otel from 'unplugin-opentelemetry/rollup'
 
 export default {
   plugins: [
-    Starter({ /* options */ }),
+    otel({ /* options */ }),
   ],
 }
 ```

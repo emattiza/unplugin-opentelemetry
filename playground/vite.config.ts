@@ -1,10 +1,9 @@
 import { OTLPTraceExporter } from '@opentelemetry/exporter-otlp-grpc'
 import { defineConfig } from 'vite'
-import Unplugin from '../src/vite'
+import otel from 'unplugin-opentelemetry/vite';
 import vue from '@vitejs/plugin-vue'
 import { Metadata, credentials } from '@grpc/grpc-js'
 
-const otel = Unplugin;
 const metadata = new Metadata();
 const traceExporter = new OTLPTraceExporter({
   url: "grpc://localhost:4317/",
