@@ -51,7 +51,7 @@ export default createUnplugin<Options>((plugin_options, meta) => {
       const transformIncludeSpan = tracer.startSpan('transformInclude', undefined, transfromIncludeCtx);
       transformIncludeSpan.setAttribute("transform-include.id", `${id}`)
       transformIncludeSpan.end()
-      return undefined;
+      return false;
     },
     buildEnd() {
       buildSpan.end();
