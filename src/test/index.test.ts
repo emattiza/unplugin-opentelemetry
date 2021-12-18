@@ -32,7 +32,7 @@ describe('@emattiza/unplugin-opentelemetry', () => {
   describe('build one application', () => {
     let spans: WrittenSpan[];
     let rootSpan: WrittenSpan;
-    jest.setTimeout(20*1000);
+    jest.setTimeout(60*1000);
     beforeAll(async () => {
       await buildExampleApp();
       /*
