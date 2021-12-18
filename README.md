@@ -2,23 +2,6 @@
 
 [![NPM version](https://img.shields.io/npm/v/unplugin-opentelemetry?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-opentelemetry)
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
-
-## Template Usage
-
-To use this template, clone it down using:
-
-```bash
-npx degit emattiza/unplugin-opentelemetry my-unplugin
-```
-
-And do a global replace of `unplugin-opentelemetry` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
-
 ## Install
 
 ```bash
