@@ -1,6 +1,6 @@
 import { OTLPTraceExporter } from '@opentelemetry/exporter-otlp-grpc'
 import { defineConfig } from 'vite'
-import otel from '../vite';
+import otel from '../src/vite';
 import vue from '@vitejs/plugin-vue'
 import { Metadata, credentials } from '@grpc/grpc-js'
 
