@@ -39,14 +39,16 @@ export default createUnplugin<Options>((plugin_options, meta) => {
       return undefined;
     },
     transform(this, code, id) {
-      const transformSpan = tracer.startSpan('transform')
+      const transformCtx = trace.setSpan(context.active(), buildSpan);
+      const transformSpan = tracer.startSpan('transform', undefined, transformCtx);
       transformSpan.setAttribute("transform.code", `${code}`)
       transformSpan.setAttribute("transform.id", `${id}`)
       transformSpan.end()
       return undefined;
     },
     transformInclude(id) {
-      const transformIncludeSpan = tracer.startSpan('transformInclude')
+      const transfromIncludeCtx = trace.setSpan(context.active(), buildSpan)
+      const transformIncludeSpan = tracer.startSpan('transformInclude', undefined, transfromIncludeCtx);
       transformIncludeSpan.setAttribute("transform-include.id", `${id}`)
       transformIncludeSpan.end()
       return undefined;

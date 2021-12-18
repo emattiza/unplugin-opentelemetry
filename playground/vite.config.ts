@@ -6,10 +6,8 @@ import { Metadata, credentials } from '@grpc/grpc-js'
 
 const otel = Unplugin;
 const metadata = new Metadata();
-metadata.set("x-honeycomb-team", process.env.HONEYCOMB_API_KEY ? process.env.HONEYCOMB_API_KEY : "");
-metadata.set("x-honeycomb-dataset", "unplugin-test")
 const traceExporter = new OTLPTraceExporter({
-  url: "grpc://api.honeycomb.io:443/",
+  url: "grpc://localhost:4317/",
   credentials: credentials.createSsl(),
   metadata
 });
